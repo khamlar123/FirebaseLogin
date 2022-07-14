@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./code.component.scss']
 })
 export class CodeComponent implements OnInit {
+
   otp: string = '';
   verify: any;
   phone = '';
@@ -26,7 +26,9 @@ export class CodeComponent implements OnInit {
     }
   }
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    ) { }
 
 
   ngOnInit(): void {
@@ -49,20 +51,20 @@ export class CodeComponent implements OnInit {
     var credentials = firebase.auth.PhoneAuthProvider.credential(this.verify, this.otp);
 
     firebase.auth().signInWithCredential(credentials).then((res) => {
-      console.log(res);
+
       localStorage.setItem('user_data', JSON.stringify(res))
       this.router.navigate(['/dashboard']);
+
     }).catch((err) => {
       alert(err.message)
     })
 
   }
 
-  signin(){
-    firebase.auth().signInWithPhoneNumber(this.phone, this.verify).then((res) => {
-      console.log(res);
 
-    })
-  }
+
+
+
+
 
 }
