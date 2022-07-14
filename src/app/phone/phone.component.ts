@@ -22,6 +22,13 @@ export class PhoneComponent implements OnInit {
     appId: "1:484249561648:web:3c8766a1988ab82f485bf5"
   }
 
+  swMode = 0;
+
+  loginModal ={
+    email: '',
+    password: '',
+  }
+
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -40,6 +47,13 @@ export class PhoneComponent implements OnInit {
       setTimeout(() => {
         window.location.reload()
       },5000)
+    })
+  }
+
+  loginBymaile():void{
+    firebase.auth().signInWithEmailAndPassword(this.loginModal.email, this.loginModal.password).then((res) => {
+        localStorage.setItem('user_data', JSON.stringify(res));
+        this.router.navigate(['/dashboard']);
     })
   }
 

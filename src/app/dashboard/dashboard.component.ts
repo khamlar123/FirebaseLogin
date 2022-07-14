@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('user_data')!);
   }
 
-  logOut():void{
+  logout():void{
     this.afAuth.signOut().then(() => {
       this.router.navigate(['/phone']);
       localStorage.clear();

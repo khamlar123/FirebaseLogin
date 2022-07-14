@@ -1,17 +1,33 @@
-<form action="/action_page.php" method="post">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
+<div class="contain">
+  <div class="row d-flex align-items-center justify-content-center">
+    <form class="col-md-6" *ngIf="swMode == 0">
+      <div class="card px-5 py-5">
+        <div class="form-input">
+          <input type="text" name="phoneNumber" placeholder="Phone Number" class="form-control"
+            placeholder="Enter Phone Number" [(ngModel)]="phoneNumber" min="10" max="15">
+        </div>
+        <button class="btn btn-success mt-4 signup" (click)="getOTP()">Get OTP</button>
+        <div id="sign-in-button"></div>
+          <div class="mail">
+              <button class="btn btn-success mt-4 signup" (click)="swMode = 1">MailLogin</button>
+          </div>
+      </div>
+    </form>
 
-  <div class="container">
-    <label for="uname"><b>Phone Number</b></label>
-    <input type="text" placeholder="Enter Username" name="phoneNumber" required [(ngModel)]="phoneNumber">
+    <form class="col-md-6" *ngIf="swMode == 1">
+      <div class="card px-5 py-5">
+        <div class="form-input">
+          <input type="text" name="phoneNumber" placeholder="Email" class="form-control"
+            placeholder="Enter Phone Number" [(ngModel)]="loginModal.email" min="10" max="15">
+        </div>
+        <div class="form-input">
+          <input type="password" name="phoneNumber" placeholder="Password" class="form-control" [(ngModel)]="loginModal.password" >
+        </div>
+        <button class="btn btn-success mt-4 signup" (click)="loginBymaile()">Login</button>
+        <!-- <div id="sign-in-button"></div> -->
+          <div class="mail">
+              <button class="btn btn-success mt-4 signup" (click)="swMode = 0">phone</button>
+          </div>
+      </div>
+    </form>
   </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn" (click)="getOTP()">Get OTP</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-
-  <div id="sign-in-button"></div>
-</form>
