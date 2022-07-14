@@ -1,0 +1,12 @@
+<div class="otp" style="margin-left: auto; margin-right: auto; width: 25rem; padding-top: 20%;">
+  <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="config"></ng-otp-input>
+  <button (click)="handleClick()" style="height: 35px; padding: 0 10px; margin-top: 10px;">Verify OTP</button>
+</div>
+
+
+<div>
+  <label for="">phone</label>
+  <input type="text" [(ngModel)]="phone">
+  <button (click)="signin()">login</button>
+</div>
+
