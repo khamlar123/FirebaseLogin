@@ -45,6 +45,7 @@ export class CodeComponent implements OnInit {
 
   onOtpChange(otpCode: any){
     this.otp = otpCode;
+    alert(1);
   }
 
   handleClick(){

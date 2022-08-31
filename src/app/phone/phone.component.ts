@@ -36,7 +36,7 @@ export class PhoneComponent implements OnInit {
   }
 
   getOTP() {
-    this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {sizr: 'invisible'});
+    this.reCaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {size: 'invisible'});
     firebase.auth().signInWithPhoneNumber(this.phoneNumber, this.reCaptchaVerifier).then(
       (confirmtionResult) => {
         localStorage.setItem('verificationId', JSON.stringify(confirmtionResult.verificationId))
